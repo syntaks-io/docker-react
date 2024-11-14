@@ -1,0 +1,21 @@
+version: "3"
+services:
+  frontend:
+    image: wevenstall/frontend:dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /opt/app/node_modules
+      - .:/opt/app
+  tests:
+    image: wevenstall/frontend:test
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: ["npm", "run", "test"]
+    volumes:
+      - /opt/app/node_modules
+      - .:/opt/app

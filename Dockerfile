@@ -1,6 +1,8 @@
 # Builder
 FROM node:alpine AS builder
 
+EXPOSE 80
+
 WORKDIR '/opt/app'
 
 COPY package.json .
